@@ -15,9 +15,9 @@ export default function TokenHeader() {
         Fire Token
       </h2>
 
-      <div className='inline-block align-middle items-center text-md text-gray-500'>
+      <div className='inline-block align-middle items-center text-md text-gray-100'>
         <StopIcon
-          className='inline-block ml-2 h-5 w-5 text-gray-400'
+          className='inline-block ml-2 h-5 w-5 text-gray-100'
           aria-hidden='true'
         />
         <span className='inline-block align-middle'>FIR</span>

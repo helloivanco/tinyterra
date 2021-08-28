@@ -1,65 +1,76 @@
-import {
-  ResponsiveContainer,
-  AreaChart,
-  XAxis,
-  Area,
-  Tooltip,
-  CartesianGrid,
-} from 'recharts';
-import { format, parseISO, subDays } from 'date-fns';
+import React from 'react';
+import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 
-const data = [];
-for (let num = 30; num >= 0; num--) {
-  data.push({
-    date: subDays(new Date(), num).toISOString().substr(0, 10),
-    value: Math.floor(Math.random() * 14),
-  });
+function randomArray() {
+  return Array.from({ length: 20 }, () => Math.floor(Math.random() * 40));
 }
 
 export default function TokenChart() {
   return (
-    <div className='bg-white rounded-lg py-3 px-5'>
-      <ResponsiveContainer width='100%' height={400}>
-        <AreaChart data={data}>
-          <defs>
-            <linearGradient id='color' x1='0' y1='0' x2='0' y2='1'>
-              <stop offset='0%' stopColor='#3167e3' stopOpacity={0.4} />
-              <stop offset='75%' stopColor='#3167e3' stopOpacity={0.05} />
-            </linearGradient>
-          </defs>
+    <div className='backdrop-filter backdrop-blur-md bg-gray-800/50 shadow rounded-lg py-3 px-5'>
+      <div className='text-center'>
+        <div class='relative py-16 my-auto'>
+          <div className='font-semibold text-lg text-white'>Last 7 Days</div>
+          <Sparklines data={randomArray()} width={200} height={40} margin={5}>
+            <SparklinesLine
+              style={{
+                strokeWidth: 4,
+                stroke: '#6366F1',
+                fill: 'none',
+              }}
+            />
+            <SparklinesSpots
+              size={2}
+              style={{
+                stroke: 'white',
+                strokeWidth: 3,
+                fill: 'white',
+              }}
+            />
+          </Sparklines>
 
-          <Area dataKey='value' stroke='#3167e3' fill='url(#color)' />
+          <div className='mt-6 mb-2 font-semibold text-lg text-white'>
+            Tokenomics
+          </div>
 
-          <XAxis
-            dataKey='date'
-            axisLine={false}
-            tickLine={false}
-            tickFormatter={(str) => {
-              const date = parseISO(str);
-              if (date.getDate() % 7 === 0) {
-                return format(date, 'MMM, d');
-              }
-              return '';
-            }}
-          />
-
-          <Tooltip content={<CustomTooltip />} />
-
-          <CartesianGrid opacity={0.1} vertical={false} />
-        </AreaChart>
-      </ResponsiveContainer>
+          <ProgressBar progressPercentage={70} />
+        </div>
+      </div>
     </div>
   );
 }
 
-function CustomTooltip({ active, payload, label }) {
-  if (active) {
-    return (
-      <div className='tooltip'>
-        <h4>{format(parseISO(label), 'eeee, d MMM, yyyy')}</h4>
-        <p>${payload[0].value.toFixed(2)} UST</p>
+const ProgressBar = ({ progressPercentage }) => {
+  return (
+    <div className='h-10 w-full bg-gray-800/50 rounded-lg'>
+      <div
+        style={{ marginLeft: '90%' }}
+        className='absolute mt-1 text-white font-semibold text-xs'>
+        10,000 FIR
       </div>
-    );
-  }
-  return null;
-}
+      <div
+        style={{ marginLeft: `${progressPercentage}%` }}
+        className='text-white
+        absolute mt-12'>
+        3,700 left
+      </div>
+      <div
+        style={{ marginLeft: `${progressPercentage / 3}%` }}
+        className='text-white absolute mt-12'>
+        💰 33% backed
+      </div>
+
+      <div
+        style={{ width: `${progressPercentage}%` }}
+        className={`relative h-full rounded-lg ${
+          progressPercentage < 70 ? 'bg-orange-800' : 'bg-indigo-600'
+        }`}>
+        <div
+          style={{ width: `${progressPercentage}%` }}
+          className={`absolute h-full rounded-lg ${
+            progressPercentage / 3 < 70 ? 'bg-indigo-400' : 'bg-indigo-600'
+          }`}></div>
+      </div>
+    </div>
+  );
+};

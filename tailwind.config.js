@@ -14,6 +14,14 @@ module.exports = {
         bg: "url('/bg.jpeg')",
       }),
     },
+    rotate: {
+      0: '0',
+      45: '45deg',
+      90: '90deg',
+      135: '135deg',
+      180: '180deg',
+      270: '270deg',
+    },
   },
   variants: {
     extend: {},
