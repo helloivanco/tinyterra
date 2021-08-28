@@ -52,7 +52,7 @@ const ProgressBar = ({ progressPercentage }) => {
         style={{ marginLeft: `${progressPercentage}%` }}
         className='text-white
         absolute mt-12'>
-        3,700 left
+        🔥 3,700 left
       </div>
       <div
         style={{ marginLeft: `${progressPercentage / 3}%` }}
