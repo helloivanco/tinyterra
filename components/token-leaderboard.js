@@ -1,65 +1,59 @@
-/* This example requires Tailwind CSS v2.0+ */
-import {
-  CheckCircleIcon,
-  SwitchHorizontalIcon,
-  MailIcon,
-  ArrowSmDownIcon,
-  ArrowSmUpIcon,
-} from '@heroicons/react/solid';
 import React from 'react';
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
+import ChangeArrow from './change-arrow';
+import { randomNumber, randomChangeType } from '../utils/misc';
 const tokens = [
   {
-    name: 'Fire Token',
+    name: 'Fire',
     symbol: 'FRE',
-    change: '8%',
-    changeType: 'increase',
-    price: '$12.87',
+    change: randomNumber(),
+    changeType: randomChangeType(),
+    price: randomNumber(),
     href: '/token',
-    imageUrl:
-      'https://eu.ui-avatars.com/api/?name=FIR&background=FFFF00&color=ffa500',
+    imageUrl: '/tokens/fre.jpg',
   },
   {
-    name: 'Kirby Token',
+    name: 'Kirby',
     symbol: 'KBY',
     change: '12%',
-    changeType: 'increase',
-    price: '$43.33',
+    change: randomNumber(),
+    changeType: randomChangeType(),
+    price: randomNumber(),
     href: '/token',
-    imageUrl:
-      'https://eu.ui-avatars.com/api/?name=KBY&background=3167e3&color=fff',
+    imageUrl: '/tokens/kby.jpg',
   },
   {
-    name: 'Nixon Token',
+    name: 'Nixon',
     symbol: 'NXN',
     change: '3%',
-    changeType: 'decrease',
-    price: '$1.28',
+    change: randomNumber(),
+    changeType: randomChangeType(),
+    price: randomNumber(),
     href: '/token',
-    imageUrl:
-      'https://eu.ui-avatars.com/api/?name=NXN&background=6D28D9&color=fff',
+    imageUrl: '/tokens/nxn.jpg',
   },
   {
-    name: 'Delike Token',
+    name: 'Delike',
     symbol: 'DDE',
     change: '18%',
-    changeType: 'increase',
-    price: '$0.88',
+    change: randomNumber(),
+    changeType: randomChangeType(),
+    price: randomNumber(),
     href: '/token',
-    imageUrl:
-      'https://eu.ui-avatars.com/api/?name=DDE&background=000&color=fff',
+    imageUrl: '/tokens/dde.jpg',
   },
   {
-    name: 'Silvia Art NFT',
+    name: 'Silvia',
     symbol: 'SLA',
     change: '29%',
-    changeType: 'increase',
-    price: '$89.22',
+    change: randomNumber(),
+    changeType: randomChangeType(),
+    price: randomNumber(),
     href: '/token',
-    imageUrl:
-      'https://eu.ui-avatars.com/api/?name=SLA&background=DC2626&color=fff',
+    imageUrl: '/tokens/sla.jpg',
   },
 ];
+
 export default function Example() {
   function getMedal(param) {
     switch (param) {
@@ -101,15 +95,14 @@ export default function Example() {
                         alt=''
                       />
 
-                      {[0, 1, 2].includes(index) && (
-                        <span className='absolute -mt-5 -ml-1 text-2xl'>
-                          {getMedal(index)}
-                        </span>
-                      )}
+                      <span className='absolute -mt-5 -ml-2 text-3xl'>
+                        {getMedal(index)}
+                      </span>
                     </div>
                     <div className='min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4'>
-                      <div>
+                      <div className='my-auto'>
                         <p className='text-md font-bold text-white truncate'>
+                          <span className='font-extralight'>#{index + 1}</span>{' '}
                           {token.name}
                         </p>
                         <p className='flex items-center text-md text-gray-400'>
@@ -140,39 +133,16 @@ export default function Example() {
                         </Sparklines>
                       </div>
                     </div>
-                    <div className='flex'>
+                    <div className='flex text-center'>
                       <div>
                         <p className='text-lg font-medium text-white'>
-                          {token.price}
+                          ${token.price}
                         </p>
-                        <div className='flex items-center text-sm text-gray-50'>
-                          <div
-                            className={classNames(
-                              token.changeType === 'increase'
-                                ? 'text-green-500'
-                                : 'text-red-500',
-                              'inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium md:mt-2 lg:mt-0'
-                            )}>
-                            {token.changeType === 'increase' ? (
-                              <ArrowSmUpIcon
-                                className='-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-green-500'
-                                aria-hidden='true'
-                              />
-                            ) : (
-                              <ArrowSmDownIcon
-                                className='-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-red-500'
-                                aria-hidden='true'
-                              />
-                            )}
-
-                            <span className='sr-only'>
-                              {token.changeType === 'increase'
-                                ? 'Increased'
-                                : 'Decreased'}{' '}
-                              by
-                            </span>
-                            {token.change}
-                          </div>
+                        <div className='flex items-center text-gray-50 px-2.5 py-0.5 rounded-full text-sm font-medium md:mt-2 lg:mt-0'>
+                          <ChangeArrow
+                            changeType={token.changeType}
+                            change={token.change}
+                          />
                         </div>
                       </div>
                     </div>

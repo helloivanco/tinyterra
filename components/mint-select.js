@@ -1,4 +1,4 @@
-import { StopIcon, PhotographIcon, PlusIcon } from '@heroicons/react/outline';
+import { StopIcon, PhotographIcon } from '@heroicons/react/outline';
 
 const actions = [
   {

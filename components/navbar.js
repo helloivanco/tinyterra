@@ -1,26 +1,35 @@
-/* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import { CashIcon } from '@heroicons/react/solid';
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+import ChangeArrow from '../components/change-arrow';
+import { randomChangeType, randomNumber } from '../utils/misc';
 
 export default function Navbar() {
   return (
-    <div className='bg-gradient-to-b from-black/70 to-transparent'>
+    <div className='bg-gradient-to-b from-black/70 via-black/50 to-transparent'>
       <div className='max-w-5xl mx-auto px-8'>
         <div className='flex justify-between h-16'>
           <div className='flex-shrink-0 flex items-center'>
-            <img src='logo.png' className='h-10 w-auto' />
+            <a href='/'>
+              <img src='logo.png' className='h-10 w-auto' />
+            </a>
           </div>
           <div className='ml-6 flex mb-2 space-x-8'>
             <a
+              href='https://app.terraswap.io/#Swap'
+              target='_blank'
+              className='hover:border-indigo-500 text-white inline-flex items-center px-1 pt-1 hover:border-b-2 text-sm font-medium'>
+              <span className='mr-1 font-semibold'>
+                🌎 <span className='font-bold'>TNY ${randomNumber()}</span>
+              </span>
+              <ChangeArrow
+                change={randomNumber()}
+                changeType={randomChangeType()}
+              />
+            </a>
+
+            <a
               href='/'
               className='hover:border-indigo-500 text-white inline-flex items-center px-1 pt-1 hover:border-b-2 text-sm font-medium'>
-              📈 Trade
+              🚀 Leaderboard
             </a>
             <a
               href='/'
@@ -28,7 +37,7 @@ export default function Navbar() {
               🧑‍🌾 Stake
             </a>
             <a
-              href='/'
+              href='/mint'
               className='hover:border-indigo-500 text-white inline-flex items-center px-1 pt-1 hover:border-b-2 text-sm font-medium'>
               🏦 Mint
             </a>
