@@ -32,7 +32,7 @@ export default function Navbar() {
               🚀 Leaderboard
             </a>
             <a
-              href='/'
+              href='/stake'
               className='hover:border-indigo-500 text-white inline-flex items-center px-1 pt-1 hover:border-b-2 text-sm font-medium'>
               🧑‍🌾 Stake
             </a>
