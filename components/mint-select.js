@@ -5,16 +5,16 @@ const actions = [
     title: 'CW20 Token',
     href: '#',
     icon: StopIcon,
-    iconForeground: 'text-blue-700',
-    iconBackground: 'bg-blue-50',
+    iconForeground: 'text-white',
+    iconBackground: 'bg-indigo-700',
     description: 'Create a fungible token on the Terra blockchain (CosmWasm)',
   },
   {
     title: 'CW721 NFT',
     href: '#',
     icon: PhotographIcon,
-    iconForeground: 'text-blue-700',
-    iconBackground: 'bg-blue-50',
+    iconForeground: 'text-white',
+    iconBackground: 'bg-indigo-700',
     description:
       'Create a non-fungible token on the Terra blockchain (CosmWasm)',
   },
@@ -22,8 +22,8 @@ const actions = [
     title: 'ERC20 Token',
     href: '#',
     icon: StopIcon,
-    iconForeground: 'text-blue-700',
-    iconBackground: 'bg-blue-50',
+    iconForeground: 'text-white',
+    iconBackground: 'bg-indigo-700',
     description: 'Create a fungible token on the Ethereum blockchain',
   },
 
@@ -31,8 +31,8 @@ const actions = [
     title: 'ERC721 NFT',
     href: '#',
     icon: PhotographIcon,
-    iconForeground: 'text-blue-700',
-    iconBackground: 'bg-blue-50',
+    iconForeground: 'text-white',
+    iconBackground: 'bg-indigo-700',
     description: 'Create a non-fungible token on the Ethereum blockchain',
   },
 ];
@@ -47,7 +47,7 @@ export default function CreateSelect({ setSelected }) {
     setSelected(true);
   };
   return (
-    <div className='rounded-lg bg-gray-800 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px'>
+    <div className='rounded-lg backdrop-filter backdrop-blur-md bg-gray-800/50 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px'>
       {actions.map((action, actionIdx) => (
         <div
           key={action.title}
@@ -60,7 +60,7 @@ export default function CreateSelect({ setSelected }) {
             actionIdx === actions.length - 1
               ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none'
               : '',
-            'relative group text-center hover:bg-gray-700 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500'
+            'relative group text-center hover:bg-gray-800/20 transition duration-500 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500'
           )}>
           <div>
             <span

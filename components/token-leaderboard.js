@@ -1,7 +1,8 @@
 import React from 'react';
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 import ChangeArrow from './change-arrow';
-import { randomNumber, randomChangeType } from '../utils/misc';
+import { randomNumber, randomChangeType, randomArray } from '../utils/misc';
+
 const tokens = [
   {
     name: 'Fire',
@@ -15,7 +16,6 @@ const tokens = [
   {
     name: 'Kirby',
     symbol: 'KBY',
-    change: '12%',
     change: randomNumber(),
     changeType: randomChangeType(),
     price: randomNumber(),
@@ -25,7 +25,6 @@ const tokens = [
   {
     name: 'Nixon',
     symbol: 'NXN',
-    change: '3%',
     change: randomNumber(),
     changeType: randomChangeType(),
     price: randomNumber(),
@@ -35,7 +34,6 @@ const tokens = [
   {
     name: 'Delike',
     symbol: 'DDE',
-    change: '18%',
     change: randomNumber(),
     changeType: randomChangeType(),
     price: randomNumber(),
@@ -45,7 +43,6 @@ const tokens = [
   {
     name: 'Silvia',
     symbol: 'SLA',
-    change: '29%',
     change: randomNumber(),
     changeType: randomChangeType(),
     price: randomNumber(),
@@ -54,31 +51,10 @@ const tokens = [
   },
 ];
 
-export default function Example() {
-  function getMedal(param) {
-    switch (param) {
-      case 0:
-        return '🥇';
-      case 1:
-        return '🥈';
-      case 2:
-        return '🥉';
-      default:
-        return '';
-    }
-  }
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
-  }
-
-  function randomArray() {
-    return Array.from({ length: 20 }, () => Math.floor(Math.random() * 40));
-  }
-
+export default function TokenLeaderboard() {
   return (
     <div className='flex flex-col max-w-4xl px-4 mx-auto'>
-      <h3 className='text-2xl leading-6 mt-10 mb-4 drop-shadow-lg font-medium text-white'>
+      <h3 className='text-2xl leading-6 mt-10 mb-4 drop-shadow-md font-medium text-white'>
         Token Leaderboard 🚀
       </h3>
       <div className='backdrop-filter backdrop-blur-md bg-gray-800/50 shadow overflow-hidden rounded-md'>
@@ -90,26 +66,29 @@ export default function Example() {
             )
             .map((token, index) => (
               <li key={token.symbol}>
-                <a href={token.href} className='block hover:bg-gray-800/20'>
+                <a
+                  href={token.href}
+                  className='block hover:bg-gray-800/20 transition duration-500'>
                   <div className='flex items-center px-4 py-4 sm:px-6'>
                     <div className='min-w-0 flex-1 flex items-center'>
                       <div className='flex-shrink-0'>
                         <img
                           className='h-12 w-12 rounded-full'
                           src={token.imageUrl}
-                          alt=''
+                          alt={token.name}
                         />
-
                         <span className='absolute -mt-5 -ml-2 text-3xl'>
-                          {getMedal(index)}
+                          {index == 0 && <>🥇</>}
+                          {index == 1 && <>🥈</>}
+                          {index == 2 && <>🥉</>}
                         </span>
                       </div>
                       <div className='min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4'>
                         <div className='my-auto'>
                           <p className='text-md font-bold text-white truncate'>
-                            <span className='font-extralight'>
+                            <span className='font-extralight mr-1'>
                               #{index + 1}
-                            </span>{' '}
+                            </span>
                             {token.name}
                           </p>
                           <p className='flex items-center text-md text-gray-400'>

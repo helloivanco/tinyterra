@@ -11,7 +11,7 @@ module.exports = {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: (theme) => ({
-        bg: "url('/bg.jpeg')",
+        bg: "url('/bg.jpg')",
       }),
     },
     rotate: {
