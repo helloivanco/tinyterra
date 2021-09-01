@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { CashIcon } from '@heroicons/react/solid';
-import ChangeArrow from '../components/change-arrow';
+import ChangeArrow from './change-arrow';
 import { randomChangeType, randomNumber } from '../utils/misc';
 
 import { useContext } from 'react';
