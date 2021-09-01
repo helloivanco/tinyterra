@@ -72,7 +72,7 @@ export default function CreateSelect({ setSelected }) {
               <action.icon className='h-12 w-12' aria-hidden='true' />
             </span>
           </div>
-          <div className='mt-8'>
+          <div className='mt-5'>
             <h3 className='text-lg font-medium text-white'>
               <a href='' onClick={_handleClick} className='focus:outline-none'>
                 {/* Extend touch target to entire panel */}
@@ -80,7 +80,9 @@ export default function CreateSelect({ setSelected }) {
                 {action.title}
               </a>
             </h3>
-            <p className='mt-2 text-sm text-gray-400'>{action.description}</p>
+            <p className='mt-2 text-md font-light text-gray-200'>
+              {action.description}
+            </p>
           </div>
         </div>
       ))}

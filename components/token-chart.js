@@ -9,9 +9,8 @@ export default function TokenChart() {
   return (
     <div className='backdrop-filter backdrop-blur-md bg-gray-800/50 shadow rounded-lg py-3 px-5'>
       <div className='text-center'>
-        <div class='relative py-16 my-auto'>
-          <div className='font-semibold text-lg text-white'>Last 7 Days</div>
-          <Sparklines data={randomArray()} width={200} height={40} margin={5}>
+        <div className='relative pb-12 my-auto'>
+          <Sparklines data={randomArray()} width={200} height={100} margin={5}>
             <SparklinesLine
               style={{
                 strokeWidth: 4,
@@ -29,7 +28,7 @@ export default function TokenChart() {
             />
           </Sparklines>
 
-          <div className='mt-6 mb-2 font-semibold text-lg text-white'>
+          <div className='text-left mt-6 mb-2 font-light text-lg text-white'>
             Tokenomics
           </div>
 
@@ -59,8 +58,8 @@ const ProgressBar = ({ progressPercentage }) => {
       </div>
       <div
         style={{ marginLeft: `${progressPercentage / 3}%` }}
-        className='text-white absolute mt-12'>
-        💰 33% backed
+        className='text-white text-xs absolute mt-12'>
+        💰 Backed by $343 in TNY
       </div>
 
       <div
