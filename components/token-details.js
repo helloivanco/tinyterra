@@ -9,7 +9,7 @@ import { randomNumber } from '../utils/misc';
 
 export default function TokenDetails({ token }) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState('');
 
   return (
     <>
@@ -61,7 +61,7 @@ export default function TokenDetails({ token }) {
             </div>
             <div className='mt-1'>
               <input
-                type='text'
+                type='number'
                 name='value'
                 id='value'
                 className='shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full text-lg border-gray-300 rounded-md'

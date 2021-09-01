@@ -22,6 +22,7 @@ export default function Example({ open, setOpen, token, value }) {
       price: financial(tokens[index]?.price + 43.43),
       symbol: tokens[index]?.symbol,
       imageUrl: tokens[index]?.imageUrl,
+      description: tokens[index]?.description,
     };
     console.log(tokens);
 
